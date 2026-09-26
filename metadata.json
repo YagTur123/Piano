@@ -1,0 +1,6 @@
+{
+  "name": "Pianoforte Studio - GarageBand Piyano Eğitimi & Yol Haritası",
+  "description": "3x1 tabletler için parmak boyutuna göre ayarlanabilir, GarageBand estetiğinde sıfırdan ileri seviyeye interaktif piyano öğrenme ve çalışma stüdyosu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

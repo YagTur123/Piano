@@ -1,0 +1,345 @@
+@import "tailwindcss";
+
+@layer base {
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #121316;
+    color: #e5e5ea;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code, pre, .font-mono {
+    font-family: "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, monospace;
+  }
+}
+
+/* Custom scrollbars for clean audio workstation feel */
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #141518;
+}
+::-webkit-scrollbar-thumb {
+  background: #2c2e35;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e424c;
+}
+
+/* GarageBand Brushed Metal Header */
+.gb-topbar {
+  background: linear-gradient(180deg, #37383d 0%, #2b2c31 45%, #222327 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  border-bottom: 1px solid #101114;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.8);
+}
+
+/* Apple GarageBand Glass LCD Display */
+.gb-lcd {
+  background: radial-gradient(ellipse at 50% 30%, #151a1e 0%, #0d1013 100%);
+  border: 1px solid #282f37;
+  border-top-color: #1a2026;
+  border-bottom-color: #3b4550;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.gb-lcd::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.01) 100%);
+  pointer-events: none;
+}
+
+/* Apple Hardware Button - Standard */
+.gb-btn {
+  background: linear-gradient(180deg, #383a40 0%, #282a2f 50%, #1e1f24 100%);
+  border: 1px solid #41454d;
+  border-top-color: #585d68;
+  border-bottom-color: #141518;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  color: #d1d5db;
+  transition: all 0.06s ease;
+}
+
+.gb-btn:active {
+  background: linear-gradient(180deg, #1b1c20 0%, #24252a 100%);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+  transform: translateY(1px);
+}
+
+.gb-btn-active {
+  background: linear-gradient(180deg, #233544 0%, #182531 100%);
+  border-color: #38bdf8;
+  color: #7dd3fc;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 8px rgba(56, 189, 248, 0.25);
+}
+
+/* Apple Circular Transport Buttons (Rewind, Play, Record) */
+.gb-transport-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #44474e 0%, #2c2f35 60%, #212328 100%);
+  border: 1px solid #4b5059;
+  border-top-color: #636975;
+  border-bottom-color: #151619;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  color: #e5e7eb;
+  transition: all 0.08s ease;
+}
+
+.gb-transport-btn:active {
+  background: linear-gradient(180deg, #1d1e22 0%, #26282e 100%);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
+  transform: translateY(1px);
+}
+
+/* Glowing Play State (Apple Green) */
+.gb-transport-play-active {
+  background: linear-gradient(180deg, #1e4620 0%, #163618 100%);
+  border-color: #30d158;
+  color: #30d158;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 10px rgba(48, 209, 88, 0.4);
+}
+
+/* Glowing Record State (Apple Red) */
+.gb-transport-rec-active {
+  background: linear-gradient(180deg, #4d1818 0%, #350f0f 100%);
+  border-color: #ff453a;
+  color: #ff453a;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 69, 58, 0.5);
+  animation: pulse-rec 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse-rec {
+  0%, 100% { box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 10px rgba(255, 69, 58, 0.4); }
+  50% { box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 16px rgba(255, 69, 58, 0.7); }
+}
+
+/* Polished Rosewood / Piano Fallboard */
+.wood-fallboard {
+  background: linear-gradient(180deg, #1c1511 0%, #261912 40%, #160e0a 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -2px 4px rgba(0, 0, 0, 0.75);
+}
+
+/* Red Velvet Damper Strip (GarageBand Signature) */
+.felt-strip {
+  background: linear-gradient(180deg, #a81c1c 0%, #851313 55%, #4c0707 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Ivory White Piano Key - Apple Touch Instrument Finish */
+.white-key {
+  background: linear-gradient(180deg, #faf8f5 0%, #ffffff 65%, #ede9df 100%);
+  box-shadow: 
+    inset 0 1px 0 #ffffff,
+    inset 0 -4px 0 #b3aba0,
+    inset 1px 0 1px rgba(255, 255, 255, 0.8),
+    inset -1px 0 1px rgba(0, 0, 0, 0.15),
+    0 3px 5px rgba(0, 0, 0, 0.35);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: transform 0.04s ease-out, background 0.04s ease-out, box-shadow 0.04s ease-out;
+}
+
+.white-key.active-pressed {
+  background: linear-gradient(180deg, #e4ddd1 0%, #ece6da 70%, #ded6c5 100%);
+  box-shadow: 
+    inset 0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 -1px 0 #9e9587,
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  transform: translateY(2px);
+}
+
+/* Ebony Black Piano Key */
+.black-key {
+  background: linear-gradient(180deg, #2f3034 0%, #1f2023 35%, #101012 100%);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 1px 0 0 rgba(255, 255, 255, 0.14),
+    inset -1px 0 0 rgba(0, 0, 0, 0.7),
+    0 5px 8px rgba(0, 0, 0, 0.75),
+    0 1px 3px rgba(0, 0, 0, 0.95);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  transition: transform 0.04s ease-out, background 0.04s ease-out, box-shadow 0.04s ease-out;
+}
+
+.black-key.active-pressed {
+  background: linear-gradient(180deg, #18181a 0%, #0e0e10 50%, #080809 100%);
+  box-shadow: 
+    inset 0 2px 5px rgba(0, 0, 0, 0.95),
+    0 2px 3px rgba(0, 0, 0, 0.6);
+  transform: translateY(2px);
+}
+
+/* Rubber Ribbed Performance Wheels (Pitch Bend & Modulation) */
+.rubber-wheel {
+  background: repeating-linear-gradient(
+    180deg,
+    #27282d 0px,
+    #27282d 3px,
+    #18191c 3px,
+    #18191c 6px
+  );
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.95),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.95),
+    inset 2px 0 3px rgba(255, 255, 255, 0.1),
+    inset -2px 0 3px rgba(0, 0, 0, 0.8),
+    0 2px 5px rgba(0, 0, 0, 0.7);
+  border: 1px solid #141518;
+}
+
+/* Hardware LED indicator dot */
+.led-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #292c33;
+  border: 1px solid #17181c;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.led-dot.led-amber {
+  background: #ff9f0a;
+  border-color: #d97706;
+  box-shadow: 0 0 6px #ff9f0a, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.led-dot.led-cyan {
+  background: #0a84ff;
+  border-color: #0070e0;
+  box-shadow: 0 0 6px #0a84ff, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.led-dot.led-green {
+  background: #30d158;
+  border-color: #24b045;
+  box-shadow: 0 0 6px #30d158, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.led-dot.led-red {
+  background: #ff453a;
+  border-color: #dc2626;
+  box-shadow: 0 0 6px #ff453a, inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* GarageBand Tactile Piano Key Ripple Animation */
+@keyframes key-ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0.85;
+  }
+  35% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+@keyframes key-ripple-shockwave {
+  0% {
+    transform: translate(-50%, -50%) scale(0.18);
+    opacity: 0.95;
+    border-width: 3px;
+  }
+  45% {
+    opacity: 0.6;
+    border-width: 2px;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.key-ripple-effect {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  animation: key-ripple-expand 0.45s cubic-bezier(0.12, 0.8, 0.3, 1) forwards;
+  will-change: transform, opacity;
+  z-index: 5;
+}
+
+.key-ripple-shockwave {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  animation: key-ripple-shockwave 0.42s cubic-bezier(0.1, 0.85, 0.25, 1) forwards;
+  will-change: transform, opacity;
+  z-index: 6;
+}
+
+/* White Key Ripple: Warm Amber / Ivory Sheen */
+.key-ripple-white {
+  width: 76px;
+  height: 76px;
+  background: radial-gradient(circle, rgba(255, 170, 30, 0.42) 0%, rgba(255, 205, 80, 0.22) 40%, rgba(255, 255, 255, 0) 72%);
+}
+
+.key-ripple-shockwave-white {
+  width: 64px;
+  height: 64px;
+  border-style: solid;
+  border-color: rgba(255, 160, 20, 0.7);
+  box-shadow: 0 0 10px rgba(255, 160, 20, 0.35);
+}
+
+/* Black Key Ripple: Amber Glow / Gold Accent */
+.key-ripple-black {
+  width: 58px;
+  height: 58px;
+  background: radial-gradient(circle, rgba(255, 175, 40, 0.65) 0%, rgba(255, 140, 0, 0.3) 48%, rgba(255, 140, 0, 0) 78%);
+}
+
+.key-ripple-shockwave-black {
+  width: 48px;
+  height: 48px;
+  border-style: solid;
+  border-color: rgba(255, 190, 60, 0.8);
+  box-shadow: 0 0 12px rgba(255, 160, 20, 0.55);
+}
+
+/* 13.1" Tablet Landscape Touch & Viewport Optimizations */
+@media (min-width: 900px) and (orientation: landscape) {
+  html, body {
+    touch-action: none;
+    overscroll-behavior: none;
+    -webkit-touch-callout: none;
+  }
+
+  .white-key {
+    cursor: pointer;
+  }
+
+  .black-key {
+    cursor: pointer;
+  }
+}
